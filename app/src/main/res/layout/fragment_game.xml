@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/questionImage"
+        android:layout_width="wrap_content"
+        android:layout_height="264dp"
+        android:src="@drawable/question_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionImage" />
+
+    <Button
+        android:id="@+id/buttonPrev"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/Previous"
+        app:layout_constraintBottom_toTopOf="@+id/textCurrentScore"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/Next"
+        app:layout_constraintBottom_toTopOf="@+id/textCurrentScore"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textCurrentScore"
+        app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+        app:layout_constraintStart_toEndOf="@+id/buttonPrev">
+
+        <RadioButton
+            android:id="@+id/radioButtonTrue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/True"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/radioButtonFalse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/False"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textCurrentScore"
+            app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+            app:layout_constraintStart_toEndOf="@+id/radioButtonTrue" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textCurrentScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/CurrentScore"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
