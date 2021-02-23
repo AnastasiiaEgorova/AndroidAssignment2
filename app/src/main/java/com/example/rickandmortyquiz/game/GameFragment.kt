@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.rickandmortyquiz.databinding.FragmentGameBinding
 import com.example.rickandmortyquiz.game.GameViewModel
+import com.example.rickandmortyquiz.game.Question
 
 
 class GameFragment : Fragment() {
@@ -27,11 +28,15 @@ class GameFragment : Fragment() {
 
         viewModel.currentQuestion.observe(viewLifecycleOwner, Observer { newQuestion ->
             binding.questionText.text = newQuestion.toString()
-            deselectRadioButtons()
+            setRadioButtons()
         })
 
         viewModel.scoreString.observe(viewLifecycleOwner, Observer {newScore ->
             binding.textCurrentScore.text = newScore.toString()
+        })
+
+        viewModel.answerChecked.observe(viewLifecycleOwner, Observer {
+            setRadioButtons()
         })
 
         binding.gameViewModel = viewModel
@@ -41,8 +46,37 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
+    private fun setRadioButtons() {
+        var question = viewModel.getQuestionBank().get(viewModel.getCurrentQuestionIndex())
+
+        if (question.attempted) {
+            disableRadioButtons()
+            selectRadioButton(question.answered)
+        }
+        else {
+            enableRadioButtons()
+            deselectRadioButtons()
+        }
+    }
+
+    private fun disableRadioButtons() {
+        binding.radioButtonTrue.setEnabled(false)
+        binding.radioButtonFalse.setEnabled(false)
+    }
+
+    private fun enableRadioButtons() {
+        binding.radioButtonTrue.setEnabled(true)
+        binding.radioButtonFalse.setEnabled(true)
+    }
+
     private fun deselectRadioButtons() {
         binding.radioButtonTrue.setChecked(false)
         binding.radioButtonFalse.setChecked(false)
     }
+
+    private fun selectRadioButton(chosen: Boolean) {
+        binding.radioButtonTrue.setChecked(chosen)
+        binding.radioButtonFalse.setChecked(!chosen)
+    }
+
 }
