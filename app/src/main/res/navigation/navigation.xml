@@ -26,7 +26,11 @@
     </fragment>
     <fragment
         android:id="@+id/scoreFragment"
-        android:name="com.example.rickandmortyquiz.ScoreFragment"
+        android:name="com.example.rickandmortyquiz.score.ScoreFragment"
         android:label="fragment_score"
-        tools:layout="@layout/fragment_score" />
+        tools:layout="@layout/fragment_score" >
+        <argument
+            android:name="score"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -4,20 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="gameViewModel"
-            type="com.example.rickandmortyquiz.game.GameViewModel" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ScoreFragment">
+        tools:context=".score.ScoreFragment">
 
         <ImageView
             android:id="@+id/imageScore"
-            android:layout_width="384dp"
+            android:layout_width="match_parent"
             android:layout_height="259dp"
             android:src="@drawable/score_image"
             app:layout_constraintEnd_toEndOf="parent"

@@ -103,6 +103,6 @@ class GameFragment : Fragment() {
 
     private fun checkFinishGame() {
         if (viewModel.getGameOver())
-            view?.findNavController()?.navigate(R.id.action_gameFragment_to_scoreFragment)
+            view?.findNavController()?.navigate(GameFragmentDirections.actionGameFragmentToScoreFragment(viewModel.scoreString.value.toString()))
     }
 }
