@@ -62,18 +62,18 @@ class GameViewModel : ViewModel() {
     fun nextQuestion() {
         if (currentQuestionIndex == questionBank.size - 1)
             currentQuestionIndex = 0
+        else
+            currentQuestionIndex++
 
-        currentQuestionIndex++
-        //_answerChecked.value = false;
         _currentQuestion.value = questionBank[currentQuestionIndex].questionID
     }
 
     fun previousQuestion() {
         if (currentQuestionIndex == 0)
             currentQuestionIndex = questionBank.size - 1
+        else
+            currentQuestionIndex--
 
-        currentQuestionIndex--
-        //_answerChecked.value = false;
         _currentQuestion.value = questionBank[currentQuestionIndex].questionID
     }
 
