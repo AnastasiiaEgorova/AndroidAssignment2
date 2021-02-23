@@ -1,5 +1,6 @@
 package com.example.rickandmortyquiz
 
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,6 +30,7 @@ class GameFragment : Fragment() {
         viewModel.currentQuestion.observe(viewLifecycleOwner, Observer { newQuestion ->
             binding.questionText.text = newQuestion.toString()
             setRadioButtons()
+            setPicture()
         })
 
         viewModel.scoreString.observe(viewLifecycleOwner, Observer {newScore ->
@@ -37,6 +39,7 @@ class GameFragment : Fragment() {
 
         viewModel.answerChecked.observe(viewLifecycleOwner, Observer {
             setRadioButtons()
+            setPicture()
         })
 
         binding.gameViewModel = viewModel
@@ -70,13 +73,29 @@ class GameFragment : Fragment() {
     }
 
     private fun deselectRadioButtons() {
-        binding.radioButtonTrue.setChecked(false)
-        binding.radioButtonFalse.setChecked(false)
+        binding.radioButtonTrue.isChecked = false
+        binding.radioButtonFalse.isChecked = false
     }
 
     private fun selectRadioButton(chosen: Boolean) {
-        binding.radioButtonTrue.setChecked(chosen)
-        binding.radioButtonFalse.setChecked(!chosen)
+        binding.radioButtonTrue.isChecked = chosen
+        binding.radioButtonFalse.isChecked = !chosen
     }
 
+    private fun setPicture() {
+        var question = viewModel.getQuestionBank().get(viewModel.getCurrentQuestionIndex())
+
+        if (question.attempted && question.answer == question.answered) {
+            binding.imageRight.setVisibility(View.VISIBLE)
+            binding.imageWrong.setVisibility(View.INVISIBLE)
+        }
+        else if (question.attempted) {
+            binding.imageRight.setVisibility(View.INVISIBLE)
+            binding.imageWrong.setVisibility(View.VISIBLE)
+        }
+        else {
+            binding.imageRight.setVisibility(View.INVISIBLE)
+            binding.imageWrong.setVisibility(View.INVISIBLE)
+        }
+    }
 }

@@ -64,7 +64,40 @@
             app:layout_constraintBottom_toTopOf="@+id/textCurrentScore"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageRight"
+            android:layout_width="495dp"
+            android:layout_height="251dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/questionImage"
+            app:layout_constraintVertical_bias="0.257"
+            app:srcCompat="@drawable/right" />
+
+        <ImageView
+            android:id="@+id/imageWrong"
+            android:layout_width="472dp"
+            android:layout_height="251dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/questionImage"
+            app:srcCompat="@drawable/wrong" />
+
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -81,8 +114,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:text="@string/True"
                 android:onClick="@{() -> gameViewModel.checkAnswer(true) }"
+                android:text="@string/True"
                 android:textSize="24sp" />
 
             <RadioButton
@@ -91,8 +124,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:text="@string/False"
                 android:onClick="@{() -> gameViewModel.checkAnswer(false) }"
+                android:text="@string/False"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/textCurrentScore"
                 app:layout_constraintEnd_toStartOf="@+id/buttonNext"

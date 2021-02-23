@@ -79,10 +79,10 @@ class GameViewModel : ViewModel() {
         questionsAttempted++
 
         questionBank[currentQuestionIndex].answered = answer
-        if (questionBank[currentQuestionIndex].answer == answer)
+        if (questionBank[currentQuestionIndex].answer == answer) {
             questionsAnsweredCorrect++
-
-        updateScoreString()
+            updateScoreString()
+        }
 
         if (_answerChecked.value!!)
             _answerChecked.value = false;
