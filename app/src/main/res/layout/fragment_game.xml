@@ -82,6 +82,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:text="@string/True"
+                android:onClick="@{() -> gameViewModel.checkAnswer(true) }"
                 android:textSize="24sp" />
 
             <RadioButton
@@ -91,6 +92,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:text="@string/False"
+                android:onClick="@{() -> gameViewModel.checkAnswer(false) }"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/textCurrentScore"
                 app:layout_constraintEnd_toStartOf="@+id/buttonNext"

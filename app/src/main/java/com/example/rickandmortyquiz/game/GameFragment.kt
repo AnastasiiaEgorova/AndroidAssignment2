@@ -27,6 +27,7 @@ class GameFragment : Fragment() {
 
         viewModel.currentQuestion.observe(viewLifecycleOwner, Observer { newQuestion ->
             binding.questionText.text = newQuestion.toString()
+            deselectRadioButtons()
         })
 
         viewModel.scoreString.observe(viewLifecycleOwner, Observer {newScore ->
@@ -40,4 +41,8 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
+    private fun deselectRadioButtons() {
+        binding.radioButtonTrue.setChecked(false)
+        binding.radioButtonFalse.setChecked(false)
+    }
 }

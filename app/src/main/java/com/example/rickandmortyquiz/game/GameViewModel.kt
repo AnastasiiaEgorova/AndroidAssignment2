@@ -11,7 +11,7 @@ class GameViewModel : ViewModel() {
 
     private var answeredCorrect = 0
     private var attempted = 0
-    private var questionIndex = 0
+    private var currentQuestionIndex = 0
 
     private lateinit var questionBank: MutableList<Question>
 
@@ -35,7 +35,7 @@ class GameViewModel : ViewModel() {
     private fun newGame() {
         answeredCorrect = 0
         attempted = 0
-        questionIndex = -1
+        currentQuestionIndex = -1
 
         updateScoreString()
 
@@ -43,17 +43,33 @@ class GameViewModel : ViewModel() {
     }
 
     fun nextQuestion() {
-        if (questionIndex <= questionBank.size) {
-            questionIndex++
-            _currentQuestion.value = questionBank[questionIndex].questionID
-        }
+        if (currentQuestionIndex == questionBank.size - 1)
+            currentQuestionIndex = 0
+
+        currentQuestionIndex++
+        _currentQuestion.value = questionBank[currentQuestionIndex].questionID
     }
 
     fun previousQuestion() {
-        if (questionIndex != 0) {
-            questionIndex--
-            _currentQuestion.value = questionBank[questionIndex].questionID
+        if (currentQuestionIndex == 0)
+            currentQuestionIndex = questionBank.size - 1
+
+        currentQuestionIndex--
+        _currentQuestion.value = questionBank[currentQuestionIndex].questionID
+    }
+
+    fun checkAnswer(answer: Boolean) {
+
+        questionBank[currentQuestionIndex].attempted = true
+        attempted++
+
+        if (questionBank[currentQuestionIndex].answer == answer) {
+            questionBank[currentQuestionIndex].answered = true
+            answeredCorrect++
+            updateScoreString()
         }
+        else
+            questionBank[currentQuestionIndex].answered = false
     }
 
     private fun resetQuestionBank() {
