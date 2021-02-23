@@ -20,6 +20,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        customDebugType {
+            debuggable true
+        }
     }
     productFlavors {
     }
@@ -41,4 +44,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
     implementation "com.google.android.material:material:$version"
+
+    //ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
 }

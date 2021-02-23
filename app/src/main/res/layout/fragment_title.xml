@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/rick_morty"
+            android:text="@string/app_name"
             android:textColor="@color/purple_200"
             android:textSize="36sp"
             android:textStyle="bold"
