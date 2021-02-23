@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.rickandmortyquiz.R
 
+const val TOTALANSWERS = "3"
+
 class GameViewModel : ViewModel() {
 
     private var answeredCorrect = 0
@@ -13,11 +15,11 @@ class GameViewModel : ViewModel() {
 
     private lateinit var questionBank: MutableList<Question>
 
-    private val _scoreString = MutableLiveData<String>()
+    private var _scoreString = MutableLiveData<String>()
     val scoreString: LiveData<String>
         get() = _scoreString
 
-    private val _currentQuestion = MutableLiveData<Int>()
+    private var _currentQuestion = MutableLiveData<Int>()
     val currentQuestion: LiveData<Int>
         get() = _currentQuestion
 
@@ -34,12 +36,24 @@ class GameViewModel : ViewModel() {
         answeredCorrect = 0
         attempted = 0
         questionIndex = -1
+
+        updateScoreString()
+
         resetQuestionBank()
     }
 
-    private fun nextQuestion() {
-        questionIndex++
-        _currentQuestion.value = questionBank[questionIndex].questionID
+    fun nextQuestion() {
+        if (questionIndex <= questionBank.size) {
+            questionIndex++
+            _currentQuestion.value = questionBank[questionIndex].questionID
+        }
+    }
+
+    fun previousQuestion() {
+        if (questionIndex != 0) {
+            questionIndex--
+            _currentQuestion.value = questionBank[questionIndex].questionID
+        }
     }
 
     private fun resetQuestionBank() {
@@ -66,5 +80,9 @@ class GameViewModel : ViewModel() {
                 Question(R.string.question_20, true)
         )
         questionBank.shuffle()
+    }
+
+    private fun updateScoreString() {
+        _scoreString.value = "Your Score: " + answeredCorrect.toString() + "/" + TOTALANSWERS
     }
 }

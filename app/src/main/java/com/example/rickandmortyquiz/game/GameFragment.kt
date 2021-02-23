@@ -29,6 +29,10 @@ class GameFragment : Fragment() {
             binding.questionText.text = newQuestion.toString()
         })
 
+        viewModel.scoreString.observe(viewLifecycleOwner, Observer {newScore ->
+            binding.textCurrentScore.text = newScore.toString()
+        })
+
         binding.gameViewModel = viewModel
 
         binding.lifecycleOwner = viewLifecycleOwner
