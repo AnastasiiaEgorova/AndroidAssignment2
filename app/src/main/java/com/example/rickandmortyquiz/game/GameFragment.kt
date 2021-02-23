@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.rickandmortyquiz.databinding.FragmentGameBinding
 import com.example.rickandmortyquiz.game.GameViewModel
 import com.example.rickandmortyquiz.game.Question
@@ -40,6 +41,7 @@ class GameFragment : Fragment() {
         viewModel.answerChecked.observe(viewLifecycleOwner, Observer {
             setRadioButtons()
             setPicture()
+            checkFinishGame()
         })
 
         binding.gameViewModel = viewModel
@@ -97,5 +99,10 @@ class GameFragment : Fragment() {
             binding.imageRight.setVisibility(View.INVISIBLE)
             binding.imageWrong.setVisibility(View.INVISIBLE)
         }
+    }
+
+    private fun checkFinishGame() {
+        if (viewModel.getGameOver())
+            view?.findNavController()?.navigate(R.id.action_gameFragment_to_scoreFragment)
     }
 }

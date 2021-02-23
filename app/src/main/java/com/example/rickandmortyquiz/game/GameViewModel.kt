@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.rickandmortyquiz.R
 
-const val TOTALANSWERS = "3"
+const val TOTALANSWERS = 3
 
 class GameViewModel : ViewModel() {
 
@@ -43,6 +43,10 @@ class GameViewModel : ViewModel() {
 
     fun getCurrentQuestionIndex(): Int {
         return currentQuestionIndex
+    }
+
+    fun getGameOver(): Boolean {
+        return (questionsAttempted == TOTALANSWERS)
     }
 
     private fun newGame() {
@@ -117,6 +121,6 @@ class GameViewModel : ViewModel() {
     }
 
     private fun updateScoreString() {
-        _scoreString.value = "Your Score: " + questionsAnsweredCorrect.toString() + "/" + TOTALANSWERS
+        _scoreString.value = "Your Score: " + questionsAnsweredCorrect.toString() + "/" + TOTALANSWERS.toString()
     }
 }
