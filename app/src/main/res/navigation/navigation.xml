@@ -43,8 +43,8 @@
         android:label="@string/aboutRM"
         tools:layout="@layout/fragment_about" />
     <fragment
-        android:id="@+id/rulesFragment"
+        android:id="@+id/RulesFragment"
         android:name="com.example.rickandmortyquiz.rules.RulesFragment"
-        android:label="@string/rules"
+        android:label="@string/rules_short"
         tools:layout="@layout/fragment_rules" />
 </navigation>

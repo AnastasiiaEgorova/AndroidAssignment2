@@ -1,20 +1,16 @@
 package com.example.rickandmortyquiz
 
-import android.app.ActionBar
-import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.rickandmortyquiz.databinding.FragmentGameBinding
 import com.example.rickandmortyquiz.game.GameViewModel
-import com.example.rickandmortyquiz.game.Question
 
 
 class GameFragment : Fragment() {

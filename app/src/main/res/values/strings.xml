@@ -8,7 +8,7 @@
     <string name="gameover">Game Over</string>
     <string name="about_short">About</string>
     <string name="aboutRM">About Rick and Morty</string>
-    <string name="rules">The Rules</string>
+    <string name="rules_short">The Rules</string>
 
     <string name="question_1">The Rick &amp; Morty That The Show Follows Are Originally From Dimension C-173</string>
     <string name="question_2">Jerry\'s Station Wagon Is Based On The Car From National Lampoon\'s Vacation?</string>
@@ -39,6 +39,10 @@
     <string name="Next"><![CDATA[>]]></string>
 
     <string name="about_long">"The Rick and Morty quiz will help remind you of important concepts you have learned by watching Rick and Morty.
-        \nConsider modifying the questions and graphics to make this game your own!"
-                            </string>
+                            \nConsider modifying the questions and graphics to make this game your own!"</string>
+
+    <string name="rules_long">"Select the answer from the options given. Once you answer a question you can't change your answer.
+                            \nOnce you have answered all the questions you will go to a page that tells you the score.
+                            \nYou can return to the title screen using up or back from within the game screen, and this will also end your game."</string>
+
 </resources>

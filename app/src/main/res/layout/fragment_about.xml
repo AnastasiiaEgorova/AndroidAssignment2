@@ -11,31 +11,39 @@
 
         <ImageView
             android:id="@+id/imageTrivia"
-            android:layout_width="408dp"
-            android:layout_height="126dp"
+            android:layout_width="410dp"
+            android:layout_height="124dp"
             android:src="@drawable/nav_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textAbout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:paddingStart="32dp"
-            android:paddingTop="32dp"
-            android:paddingEnd="32dp"
-            android:paddingBottom="32dp"
-            android:text="@string/about_long"
-            android:textSize="24sp"
+        <ScrollView
+            android:layout_width="395dp"
+            android:layout_height="509dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageTrivia" />
+            app:layout_constraintTop_toBottomOf="@+id/imageTrivia">
+
+            <TextView
+                android:id="@+id/textAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:paddingStart="32dp"
+                android:paddingTop="32dp"
+                android:paddingEnd="32dp"
+                android:paddingBottom="32dp"
+                android:text="@string/about_long"
+                android:textColor="@color/purple_200"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
