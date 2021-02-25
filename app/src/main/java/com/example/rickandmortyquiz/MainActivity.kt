@@ -10,7 +10,7 @@ import com.example.rickandmortyquiz.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    //private lateinit var drawerLayout: DrawerLayout
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -20,14 +20,14 @@ class MainActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val navController = this.findNavController(R.id.myNavHostFragment)
 
-        //drawerLayout = binding.drawerLayout
-        //NavigationUI.setupWithNavController(binding.navView, navController)
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        drawerLayout = binding.drawerLayout
+        NavigationUI.setupWithNavController(binding.navView, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
 
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
-        return navController.navigateUp()
+        return NavigationUI.navigateUp(navController, drawerLayout)
     }
 }
