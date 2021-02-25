@@ -1,11 +1,13 @@
 package com.example.rickandmortyquiz
 
+import android.app.ActionBar
 import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -47,6 +49,9 @@ class GameFragment : Fragment() {
         binding.gameViewModel = viewModel
 
         binding.lifecycleOwner = viewLifecycleOwner
+
+
+        getActivity()?.getActionBar()?.setTitle("Quiz Time")
 
         return binding.root
     }

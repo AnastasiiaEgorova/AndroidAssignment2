@@ -4,6 +4,9 @@
     <string name="quiz">QUIZ</string>
     <string name="play">PLAY</string>
 
+    <string name="quiztime">Quiz Time</string>
+    <string name="gameover">Game Over</string>
+
     <string name="question_1">The Rick &amp; Morty That The Show Follows Are Originally From Dimension C-173</string>
     <string name="question_2">Jerry\'s Station Wagon Is Based On The Car From National Lampoon\'s Vacation?</string>
     <string name="question_3">Rick &amp; Morty Have Appeared In The Opening Title Screen Of The Simpsons?</string>
