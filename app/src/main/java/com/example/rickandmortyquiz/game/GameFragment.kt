@@ -39,25 +39,25 @@ class GameFragment : Fragment() {
         viewModel.answerChecked.observe(viewLifecycleOwner, Observer {
             setRadioButtons()
             setPicture()
-            checkFinishGame()
+        })
+
+        viewModel.isGameOver.observe(viewLifecycleOwner, Observer {
+            view?.findNavController()?.navigate(GameFragmentDirections.actionGameFragmentToScoreFragment(viewModel.scoreString.value.toString()))
         })
 
         binding.gameViewModel = viewModel
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-
-        getActivity()?.getActionBar()?.setTitle("Quiz Time")
-
         return binding.root
     }
 
     private fun setRadioButtons() {
-        var question = viewModel.getQuestionBank().get(viewModel.getCurrentQuestionIndex())
+        var question = viewModel.getCurrentQuestionFromBank()
 
         if (question.attempted) {
-            disableRadioButtons()
             selectRadioButton(question.answered)
+            disableRadioButtons()
         }
         else {
             enableRadioButtons()
@@ -86,7 +86,7 @@ class GameFragment : Fragment() {
     }
 
     private fun setPicture() {
-        var question = viewModel.getQuestionBank().get(viewModel.getCurrentQuestionIndex())
+        var question = viewModel.getCurrentQuestionFromBank()
 
         if (question.attempted && question.answer == question.answered) {
             binding.imageRight.setVisibility(View.VISIBLE)
@@ -100,10 +100,5 @@ class GameFragment : Fragment() {
             binding.imageRight.setVisibility(View.INVISIBLE)
             binding.imageWrong.setVisibility(View.INVISIBLE)
         }
-    }
-
-    private fun checkFinishGame() {
-        if (viewModel.getGameOver())
-            view?.findNavController()?.navigate(GameFragmentDirections.actionGameFragmentToScoreFragment(viewModel.scoreString.value.toString()))
     }
 }

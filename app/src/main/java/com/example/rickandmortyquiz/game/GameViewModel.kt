@@ -27,26 +27,22 @@ class GameViewModel : ViewModel() {
     val answerChecked: LiveData<Boolean>
         get() = _answerChecked
 
+    private var _isGameOver = MutableLiveData<Boolean>()
+    val isGameOver: LiveData<Boolean>
+        get() = _isGameOver
+
     init {
         newGame()
         nextQuestion()
-        _answerChecked.value = false;
+        _answerChecked.value = false
     }
 
     override fun onCleared() {
         super.onCleared()
     }
 
-    fun getQuestionBank(): MutableList<Question> {
-        return questionBank
-    }
-
-    fun getCurrentQuestionIndex(): Int {
-        return currentQuestionIndex
-    }
-
-    fun getGameOver(): Boolean {
-        return (questionsAttempted == TOTALANSWERS)
+    fun getCurrentQuestionFromBank(): Question {
+        return questionBank.get(currentQuestionIndex)
     }
 
     private fun newGame() {
@@ -88,10 +84,10 @@ class GameViewModel : ViewModel() {
             updateScoreString()
         }
 
-        if (_answerChecked.value!!)
-            _answerChecked.value = false;
-        else
-            _answerChecked.value = true;
+        _answerChecked.value = !(_answerChecked.value)!!
+
+        if (questionsAttempted == TOTALANSWERS)
+            _isGameOver.value = true
     }
 
     private fun resetQuestionBank() {
