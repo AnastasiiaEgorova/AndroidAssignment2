@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.rickandmortyquiz.R
 
-const val TOTALANSWERS = 3
+const val TOTALANSWERS = 20
 
 class GameViewModel : ViewModel() {
 
